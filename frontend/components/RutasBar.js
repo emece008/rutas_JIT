@@ -11,3 +11,4 @@ export async function RutasBar({ onSelect, selected }) {
         </div>
     `;
 }
+//futura funcion de reloj y tiempos.
