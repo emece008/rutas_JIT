@@ -137,6 +137,90 @@ button,
     max-width: 100%;
 }
 
+.panel-operativo-industrial {
+    margin: 0 0 16px;
+    border: 2px solid #505862;
+    background: #1c1f24;
+    color: #f2f4f8;
+}
+
+.panel-operativo-header {
+    border-bottom: 2px solid #505862;
+    padding: 10px 14px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.panel-operativo-reloj {
+    padding: 14px 14px 6px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #e5edf8;
+}
+
+.panel-operativo-fecha {
+    padding: 0 14px 14px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    color: #c2cad6;
+    text-transform: capitalize;
+}
+
+.panel-operativo-estado {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    border-top: 2px solid #505862;
+}
+
+.estado-item {
+    min-height: 92px;
+    border-right: 2px solid #505862;
+    border-bottom: 2px solid #505862;
+    padding: 10px 12px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.panel-operativo-estado .estado-item:nth-child(4n) {
+    border-right: none;
+}
+
+.estado-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.estado-valor {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.45;
+}
+
+.estado-retrasadas {
+    color: #ff6464;
+}
+
+.estado-actual {
+    color: #66db8f;
+}
+
+.estado-proxima {
+    color: #78b9ff;
+}
+
+.estado-siguiente {
+    color: #bcc4d1;
+}
+
 label {
     font-weight: 700;
 }
@@ -377,6 +461,15 @@ tr:hover td {
 
     .reloj-display {
         font-size: 2.2rem;
+    }
+
+    .panel-operativo-estado {
+        grid-template-columns: 1fr;
+    }
+
+    .estado-item,
+    .panel-operativo-estado .estado-item:nth-child(4n) {
+        border-right: none;
     }
 }
 
