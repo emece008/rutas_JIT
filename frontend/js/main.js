@@ -94,6 +94,10 @@ async function main() {
         } else if (section === 'supervisor') {
             const { Supervisor } = await import('../sections/Supervisor.js');
             sectionContent.innerHTML = Supervisor();
+        } else if (section === 'reloj') {
+            const { Reloj, initReloj } = await import('../sections/Reloj.js');
+            sectionContent.innerHTML = Reloj();
+            initReloj();
         }
     }
 

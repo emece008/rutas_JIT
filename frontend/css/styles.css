@@ -380,3 +380,158 @@ button, .menu-btn, .rutas-bar-btn {
         min-width: 100px;
     }
 }
+
+/* ── Reloj Digital con Alarmas ── */
+.section-reloj {
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 16px 8px;
+}
+.section-reloj h2 {
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+.reloj-display {
+    font-size: 4em;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    color: #1976d2;
+    background: #e3eaf6;
+    border-radius: 12px;
+    padding: 16px 24px;
+    display: inline-block;
+    margin: 8px 0;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 2px 8px rgba(25,118,210,0.15);
+}
+.reloj-fecha {
+    font-size: 1.05em;
+    color: #555;
+    margin-bottom: 16px;
+}
+.notificacion-alarma {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #e53935;
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    animation: notif-pulse 0.5s ease-in-out 3;
+}
+@keyframes notif-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+.notificacion-cerrar {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    min-width: unset;
+    min-height: unset;
+    padding: 0;
+    font-size: 1em;
+    cursor: pointer;
+    margin-left: auto;
+}
+.notificacion-cerrar:hover {
+    background: rgba(255,255,255,0.45);
+}
+.alarmas-panel {
+    text-align: left;
+    margin-top: 24px;
+}
+.alarmas-panel h3 {
+    font-size: 1.1em;
+    margin: 16px 0 8px;
+    color: #1976d2;
+}
+.form-alarma {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-end;
+    margin-bottom: 8px;
+}
+.form-alarma label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95em;
+    font-weight: bold;
+    gap: 4px;
+}
+.form-alarma input {
+    font-size: 1em;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    min-width: 120px;
+}
+.form-alarma button {
+    align-self: flex-end;
+}
+.alarma-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f4f6fa;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-left: 4px solid #1976d2;
+}
+.alarma-item.alarma-disparada {
+    border-left-color: #4caf50;
+    opacity: 0.75;
+}
+.alarma-hora {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #1976d2;
+    font-family: 'Courier New', Courier, monospace;
+    min-width: 56px;
+}
+.alarma-etiqueta {
+    flex: 1;
+    font-size: 1em;
+    color: #333;
+}
+.alarma-estado {
+    font-size: 0.9em;
+    color: #555;
+    white-space: nowrap;
+}
+.alarma-del-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 4px 6px;
+    min-width: unset;
+    min-height: unset;
+    color: #e53935;
+}
+.alarma-del-btn:hover {
+    background: #fdecea;
+    border-radius: 4px;
+}
+.alarmas-vacio {
+    color: #888;
+    font-style: italic;
+}
+@media (max-width: 699px) {
+    .reloj-display {
+        font-size: 2.6em;
+        padding: 12px 16px;
+    }
+    .form-alarma {
+        flex-direction: column;
+    }
+}
