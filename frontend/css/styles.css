@@ -386,3 +386,45 @@ tr:hover td {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 }
+
+.hoja-carga-clock {
+    margin: 10px 0 14px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.ruta-seccion {
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    background: #fff;
+}
+
+.ruta-principal {
+    border-color: #91b7eb;
+    background: #f4f9ff;
+}
+
+.rutas-cerradas {
+    opacity: 0.9;
+}
+
+.ruta-principal-header,
+.ruta-secundaria-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-cerrar-manual {
+    background: #ef6c00;
+}
+
+.btn-cerrar-manual:hover {
+    background: #cc5d00;
+}
