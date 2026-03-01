@@ -5,11 +5,6 @@ import { MenuBar } from '../components/MenuBar.js';
 import { Inicio } from '../sections/Inicio.js';
 import { Rutas } from '../sections/Rutas.js';
 import { Historial } from '../sections/Historial.js';
-import { PanelOperario } from '../components/PanelOperario.js';
-import { SelectorRutas } from '../components/SelectorRutas.js';
-import { VistaCiclos } from '../components/VistaCiclos.js';
-import { cargarPlantillas } from '../services/plantillasService.js';
-import { crearHojaDia, hojaDia } from '../services/hojaDiaService.js';
 
 async function main() {
 
@@ -29,7 +24,10 @@ async function main() {
         if (!header || !menu || !appEl) return;
         const headerRect = header.getBoundingClientRect();
         const menuRect = menu.getBoundingClientRect();
-        const extra = 4; // pequeño espacio extra
+        const root = document.documentElement;
+        root.style.setProperty('--header-height', `${Math.ceil(headerRect.height)}px`);
+        root.style.setProperty('--menu-height', `${Math.ceil(menuRect.height)}px`);
+        const extra = 16;
         const total = Math.ceil(headerRect.height + menuRect.height + extra);
         appEl.style.paddingTop = `${total}px`;
     }
@@ -37,47 +35,17 @@ async function main() {
     setTimeout(adjustTopPadding, 0);
     window.addEventListener('resize', adjustTopPadding);
     
-    // Debug visual: muestra alturas y contornos para depuración visual
-    function showHeaderMenuDebug() {
-        const header = document.querySelector('.main-header');
-        const menu = document.querySelector('.menu-bar');
-        if (!header || !menu) return;
-        // añadir borde temporal
-        header.style.outline = '2px solid rgba(255,0,0,0.6)';
-        menu.style.outline = '2px solid rgba(0,128,0,0.6)';
-        // crear panel de información
-        let dbg = document.getElementById('debug-header-menu');
-        if (!dbg) {
-            dbg = document.createElement('div');
-            dbg.id = 'debug-header-menu';
-            dbg.style.position = 'fixed';
-            dbg.style.right = '8px';
-            dbg.style.top = '8px';
-            dbg.style.background = 'rgba(0,0,0,0.6)';
-            dbg.style.color = '#fff';
-            dbg.style.padding = '6px 8px';
-            dbg.style.fontSize = '12px';
-            dbg.style.zIndex = '1100';
-            dbg.style.borderRadius = '4px';
-            document.body.appendChild(dbg);
-        }
-        const h = Math.round(header.getBoundingClientRect().height);
-        const m = Math.round(menu.getBoundingClientRect().height);
-        dbg.innerText = `header: ${h}px\nmenu: ${m}px\ntotal padding: ${h + m + 4}px`;
-        // auto-remove after 6s
-        setTimeout(() => {
-            if (dbg && dbg.parentNode) dbg.parentNode.removeChild(dbg);
-            header.style.outline = '';
-            menu.style.outline = '';
-        }, 6000);
+    function setActiveMenu(section) {
+        document.querySelectorAll('.menu-btn[data-section]').forEach((btn) => {
+            btn.classList.toggle('active', btn.dataset.section === section);
+        });
     }
-    // show debug once on load
-    setTimeout(showHeaderMenuDebug, 200);
 
     // Función para navegar entre secciones
     // Importar dinámicamente Supervisor para evitar error si no existe aún
     async function navigate(section) {
         const sectionContent = document.getElementById('section-content');
+        setActiveMenu(section);
         if (section === 'inicio') {
             sectionContent.innerHTML = Inicio();
         } else if (section === 'rutas') {

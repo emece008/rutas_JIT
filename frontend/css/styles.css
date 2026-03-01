@@ -1,537 +1,388 @@
-/* Tabla de hoja de carga: fuente y padding reducido para que quepa en pantalla */
-.tabla-hoja-carga {
-    .main-header {
-        background: #1976d2;
-        color: #fff;
-        padding: 2px 8px 2px 8px;
-        border-radius: 8px 8px 0 0;
-        margin: 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        z-index: 1000;
-        height: calc(1.3em + 4px);
-        min-height: unset;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-    }
-    .main-header h1 {
-        margin: 0;
-        font-size: 1.3em;
-        letter-spacing: 1px;
-        line-height: 1.1;
-    }
-    .menu-bar {
-        display: flex;
-        gap: 8px;
-        background: #e3eaf6;
-        padding: 2px 0 2px 0;
-        border-radius: 0 0 8px 8px;
-        margin: 0;
-        position: fixed;
-        top: calc(1.3em + 4px);
-        left: 0;
-        width: 100vw;
-        z-index: 999;
-        height: calc(1em + 4px);
-        min-height: unset;
-        box-sizing: border-box;
-        align-items: center;
-        font-size: 0.95em;
-    }
-    #app {
-        max-width: 100vw;
-        margin: 0 auto;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding-top: calc(1.3em + 1em + 8px); /* header + menu + 2px extra */
-        padding-right: 8px;
-        padding-bottom: 32px;
-        padding-left: 8px;
-        min-height: 100vh;
-        box-sizing: border-box;
-    }
-    flex-wrap: wrap;
-}
-.rutas-bar-btn {
-    background: none;
-    color: #1976d2;
-    border: 1px solid #1976d2;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 6px 18px;
-    border-radius: 4px;
-    transition: background 0.2s, color 0.2s;
-    margin-right: 4px;
-}
-.rutas-bar-btn.active, .rutas-bar-btn:hover {
-    background: #1976d2;
-    color: #fff;
-}
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6fa;
-    margin: 0;
-    padding: 0;
-    font-size: 1.1em;
-}
-#app {
-    max-width: 100vw;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 16px 8px 32px 8px;
-    min-height: 100vh;
-}
-/* Cabecera fija y compacta */
-.main-header {
-    background: #1976d2;
-    color: #fff;
-    padding: 8px 16px 4px 16px;
-    border-radius: 8px 8px 0 0;
-    margin: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    z-index: 1000;
-    min-height: 36px;
-    box-sizing: border-box;
-}
-.main-header h1 {
-    margin: 0;
-    font-size: 1.3em;
-    letter-spacing: 1px;
-}
-.menu-bar {
-    display: flex;
-    gap: 10px;
-    background: #e3eaf6;
-    padding: 6px 0 6px 0;
-    border-radius: 0 0 8px 8px;
-    margin: 0;
-    position: fixed;
-    top: 44px;
-    left: 0;
-    width: 100vw;
-    z-index: 999;
-    min-height: 32px;
-    box-sizing: border-box;
-}
-.menu-btn {
-    background: none;
-    color: #1976d2;
-    border: none;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 8px 20px;
-    border-radius: 4px;
-    transition: background 0.2s;
-}
-.menu-btn:hover, .menu-btn.active {
-    background: #d0e0fa;
-}
-.panel-operario, .selector-rutas, .vista-ciclos {
-    margin-bottom: 32px;
-}
-label {
-    font-weight: bold;
-}
-input[type="text"] {
-    padding: 6px 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-right: 8px;
-}
-button {
-    background: #1976d2;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 1em;
-}
-button:hover {
-    background: #125ea2;
+:root {
+    --header-height: 56px;
+    --menu-height: 56px;
+    --surface: #fff;
+    --bg: #f4f6fa;
+    --primary: #1976d2;
+    --primary-strong: #125ea2;
+    --border: #d9e2ec;
+    --text: #1f2937;
 }
 
-/* Tabla responsiva y visualmente clara */
-table {
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--bg);
+}
+
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--surface);
+    padding: calc(var(--header-height) + var(--menu-height) + 16px) 12px 24px;
+}
+
+#section-content {
+    margin-top: 8px;
+}
+
+.main-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 12px 16px;
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.main-header h1 {
+    margin: 0;
+    text-align: center;
+    line-height: 1.2;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.menu-bar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #e3eaf6;
+    border-bottom: 1px solid #c6d6f0;
+}
+
+.menu-btn,
+.rutas-bar-btn,
+button,
+.supervisor-ruta-btn,
+.btn-accion,
+.btn-guardar-hoja {
+    min-height: 40px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    padding: 8px 14px;
+    font-size: 0.95rem;
+}
+
+.menu-btn {
+    background: #fff;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.menu-btn:hover,
+.menu-btn.active {
+    background: #d0e0fa;
+}
+
+#btn-cerrar-sesion.menu-btn {
+    margin-left: auto !important;
+    background: #e53935 !important;
+    color: #fff !important;
+}
+
+.rutas-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.rutas-bar-btn,
+.supervisor-ruta-btn {
+    background: #fff;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    font-weight: 700;
+}
+
+.rutas-bar-btn.active,
+.rutas-bar-btn:hover,
+.supervisor-ruta-btn:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+.panel-operario,
+.selector-rutas,
+.vista-ciclos,
+.section-inicio,
+.section-rutas,
+.section-supervisor,
+.section-historial,
+.section-hoja-carga {
+    margin: 0 auto 24px;
+    max-width: 100%;
+}
+
+label {
+    font-weight: 700;
+}
+
+input,
+select,
+textarea {
+    font-size: 1rem;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+}
+
+button,
+.btn-accion,
+.btn-guardar-hoja {
+    background: var(--primary);
+    color: #fff;
+}
+
+button:hover,
+.btn-accion:hover,
+.btn-guardar-hoja:hover {
+    background: var(--primary-strong);
+}
+
+.plantilla,
+.tabla-centro {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
+}
+
+table,
+.tabla-ancha,
+.tabla-hoja-carga {
+    display: block;
+    width: 100%;
     margin-top: 16px;
     overflow-x: auto;
-    display: block;
-    max-width: 100vw;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-collapse: separate;
+    border-spacing: 0;
     border-radius: 8px;
-    position: relative;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
-th, td {
+
+th,
+td {
     border: 1px solid #e0e0e0;
-    padding: 14px 10px;
     text-align: center;
-    font-size: 1em;
-    background-clip: padding-box;
+    padding: 10px 8px;
+    font-size: 0.95rem;
 }
+
 th {
-    background: #e3eaf6;
-    font-size: 1.08em;
-    font-weight: bold;
     position: sticky;
     top: 0;
     z-index: 2;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    background: #e3eaf6;
+    font-weight: 700;
 }
+
 tr:nth-child(even) td {
     background: #f7fafd;
 }
+
 tr:hover td {
     background: #eaf3ff;
-    transition: background 0.2s;
 }
 
-/* Scrollbar visible y feedback táctil */
-table::-webkit-scrollbar {
-    height: 10px;
-}
-table::-webkit-scrollbar-thumb {
-    background: #b3c6e0;
-    border-radius: 5px;
-}
-table:active, table:focus {
-    outline: 2px solid #1976d2;
+.vista-ciclos table {
+    min-width: 760px;
 }
 
-/* Ajustes responsivos para tablas */
-@media (max-width: 900px) {
-    table {
-        font-size: 0.97em;
-        border-radius: 0;
-    }
-    th, td {
-        min-width: 90px;
-        padding: 10px 6px;
-    }
-}
-@media (min-width: 700px) and (max-width: 1200px) and (orientation: landscape) {
-    table {
-        font-size: 1.08em;
-        border-radius: 8px;
-    }
-    th, td {
-        min-width: 110px;
-        padding: 16px 10px;
-    }
-}
-@media (max-width: 699px) {
-    table {
-        font-size: 0.93em;
-        border-radius: 0;
-    }
-    th, td {
-        min-width: 80px;
-        padding: 8px 4px;
-    }
-}
-
-input, select, textarea {
-    font-size: 1em;
-    padding: 10px 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    min-width: 60px;
-}
-
-button, .menu-btn, .rutas-bar-btn {
-    min-width: 44px;
-    min-height: 44px;
-    font-size: 1.1em;
-    padding: 10px 20px;
-}
-
-/* Responsive para tablets en modo horizontal (prioridad) */
-@media (min-width: 700px) and (max-width: 1200px) and (orientation: landscape) {
-    #app {
-        max-width: 100vw;
-        margin: 0 auto;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        padding: 100px 8px 32px 8px; /* margen superior para cabecera y menú fijos */
-        min-height: 100vh;
-        box-sizing: border-box;
-    }
-        gap: 24px;
-        font-size: 1.15em;
-        padding: 16px 0;
-    }
-    table {
-        font-size: 1.1em;
-    }
-    th, td {
-        padding: 16px 10px;
-    }
-    input, select, textarea {
-        font-size: 1.1em;
-        min-width: 80px;
-    }
-    button, .menu-btn, .rutas-bar-btn {
-        font-size: 1.15em;
-        min-width: 56px;
-        min-height: 48px;
-        padding: 14px 28px;
-    }
-}
-
-/* Responsive para móviles (vertical y horizontal) */
-@media (max-width: 699px) {
-    #app {
-        max-width: 100vw;
-        padding: 4px 0 24px 0;
-        border-radius: 0;
-        box-shadow: none;
-    }
-    .main-header {
-        font-size: 1em;
-        padding: 16px 8px 8px 8px;
-        border-radius: 0;
-        margin: 0;
-    }
-    .menu-bar {
-        gap: 8px;
-        font-size: 1em;
-        padding: 8px 0;
-        border-radius: 0;
-        margin: 0 0 16px 0;
-    }
-    table {
-        font-size: 0.95em;
-        display: block;
-        overflow-x: auto;
-        max-width: 100vw;
-    }
-    th, td {
-        min-width: 90px;
-        padding: 8px 4px;
-    }
-    input, select, textarea {
-        font-size: 1em;
-        min-width: 60px;
-    }
-    button, .menu-btn, .rutas-bar-btn {
-        font-size: 1em;
-        min-width: 44px;
-        min-height: 44px;
-        padding: 8px 12px;
-    }
-}
-
-/* Responsive para escritorio (pantallas grandes) */
-@media (min-width: 1201px) {
-    #app {
-        max-width: 1400px;
-        padding: 40px 80px 64px 80px;
-    }
-    .main-header {
-        font-size: 1.4em;
-        padding: 32px 64px 24px 64px;
-    }
-    .menu-bar {
-        gap: 32px;
-        font-size: 1.2em;
-        padding: 20px 0;
-    }
-    table {
-        font-size: 1.15em;
-    }
-    th, td {
-        padding: 18px 14px;
-    }
-    input, select, textarea {
-        font-size: 1.15em;
-        min-width: 100px;
-    }
-    button, .menu-btn, .rutas-bar-btn {
-        font-size: 1.2em;
-        min-width: 64px;
-        min-height: 52px;
-        padding: 16px 32px;
-    }
-}
-
-/* Scroll horizontal para tablas en pantallas pequeñas y responsividad extra */
-@media (max-width: 900px) {
-    table {
-        display: block;
-        overflow-x: auto;
-        max-width: 100vw;
-    }
-    th, td {
-        min-width: 100px;
-    }
-}
-
-/* ── Reloj Digital con Alarmas ── */
 .section-reloj {
     max-width: 520px;
     margin: 0 auto;
     text-align: center;
     padding: 16px 8px;
 }
+
 .section-reloj h2 {
-    font-size: 1.5em;
     margin-bottom: 8px;
 }
+
 .reloj-display {
-    font-size: 4em;
-    font-weight: bold;
-    letter-spacing: 0.12em;
-    color: #1976d2;
-    background: #e3eaf6;
-    border-radius: 12px;
-    padding: 16px 24px;
     display: inline-block;
     margin: 8px 0;
+    border-radius: 12px;
+    padding: 16px 20px;
     font-family: 'Courier New', Courier, monospace;
-    box-shadow: 0 2px 8px rgba(25,118,210,0.15);
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+    background: #e3eaf6;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
 }
+
 .reloj-fecha {
-    font-size: 1.05em;
-    color: #555;
     margin-bottom: 16px;
+    font-size: 1rem;
+    color: #555;
 }
+
 .notificacion-alarma {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: #e53935;
-    color: #fff;
+    margin: 12px 0;
     border-radius: 8px;
     padding: 12px 16px;
-    margin: 12px 0;
-    font-size: 1.1em;
-    font-weight: bold;
-    animation: notif-pulse 0.5s ease-in-out 3;
-}
-@keyframes notif-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-}
-.notificacion-cerrar {
-    background: rgba(255,255,255,0.25);
+    font-size: 1rem;
+    font-weight: 700;
     color: #fff;
-    border: none;
-    border-radius: 50%;
+    background: #e53935;
+}
+
+.notificacion-cerrar {
+    margin-left: auto;
+    min-width: 28px;
+    min-height: 28px;
     width: 28px;
     height: 28px;
-    min-width: unset;
-    min-height: unset;
     padding: 0;
-    font-size: 1em;
-    cursor: pointer;
-    margin-left: auto;
+    border-radius: 50%;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.25);
 }
+
 .notificacion-cerrar:hover {
-    background: rgba(255,255,255,0.45);
+    background: rgba(255, 255, 255, 0.45);
 }
+
 .alarmas-panel {
-    text-align: left;
     margin-top: 24px;
+    text-align: left;
 }
-.alarmas-panel h3 {
-    font-size: 1.1em;
-    margin: 16px 0 8px;
-    color: #1976d2;
-}
+
 .form-alarma {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
     align-items: flex-end;
+    gap: 8px;
     margin-bottom: 8px;
 }
+
 .form-alarma label {
     display: flex;
     flex-direction: column;
-    font-size: 0.95em;
-    font-weight: bold;
     gap: 4px;
+    font-size: 0.95rem;
 }
+
 .form-alarma input {
-    font-size: 1em;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
     min-width: 120px;
 }
-.form-alarma button {
-    align-self: flex-end;
-}
+
 .alarma-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: #f4f6fa;
-    border-radius: 8px;
-    padding: 10px 14px;
     margin-bottom: 8px;
-    border-left: 4px solid #1976d2;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+    padding: 10px 14px;
+    background: var(--bg);
 }
+
 .alarma-item.alarma-disparada {
     border-left-color: #4caf50;
     opacity: 0.75;
 }
+
 .alarma-hora {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #1976d2;
-    font-family: 'Courier New', Courier, monospace;
     min-width: 56px;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--primary);
+    font-size: 1.2rem;
+    font-weight: 700;
 }
+
 .alarma-etiqueta {
     flex: 1;
-    font-size: 1em;
-    color: #333;
 }
+
 .alarma-estado {
-    font-size: 0.9em;
-    color: #555;
     white-space: nowrap;
+    color: #555;
+    font-size: 0.9rem;
 }
+
 .alarma-del-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.1em;
+    min-width: 0;
+    min-height: 0;
     padding: 4px 6px;
-    min-width: unset;
-    min-height: unset;
+    border: none;
+    background: none;
     color: #e53935;
+    font-size: 1.1rem;
 }
-.alarma-del-btn:hover {
-    background: #fdecea;
-    border-radius: 4px;
-}
+
 .alarmas-vacio {
-    color: #888;
-    font-style: italic;
+    color: #6b7280;
 }
-@media (max-width: 699px) {
-    .reloj-display {
-        font-size: 2.6em;
-        padding: 12px 16px;
+
+@media (max-width: 768px) {
+    :root {
+        --header-height: 64px;
     }
-    .form-alarma {
-        flex-direction: column;
+
+    #app {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .menu-bar {
+        justify-content: flex-start;
+    }
+
+    #btn-cerrar-sesion.menu-btn {
+        margin-left: 0 !important;
+    }
+
+    .menu-btn,
+    .rutas-bar-btn,
+    button,
+    .supervisor-ruta-btn,
+    .btn-accion,
+    .btn-guardar-hoja {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    th,
+    td {
+        min-width: 90px;
+    }
+
+    .reloj-display {
+        font-size: 2.2rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    #app {
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 }
