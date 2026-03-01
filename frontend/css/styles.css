@@ -2,9 +2,9 @@
     --header-height: 56px;
     --menu-height: 56px;
     --surface: #fff;
-    --bg: #f4f6fa;
-    --primary: #1976d2;
-    --primary-strong: #125ea2;
+    --bg: #f4f6f9;
+    --primary: #0d3b66;
+    --primary-strong: #145da0;
     --border: #d9e2ec;
     --text: #1f2937;
 }
@@ -67,8 +67,8 @@ body {
     justify-content: center;
     gap: 8px;
     padding: 8px 12px;
-    background: #e3eaf6;
-    border-bottom: 1px solid #c6d6f0;
+    background: var(--primary);
+    border-bottom: 1px solid #0b3359;
 }
 
 .menu-btn,
@@ -79,27 +79,41 @@ button,
 .btn-guardar-hoja {
     min-height: 40px;
     border-radius: 6px;
-    border: none;
+    border: 1px solid var(--primary);
     cursor: pointer;
     padding: 8px 14px;
     font-size: 0.95rem;
 }
 
 .menu-btn {
-    background: #fff;
-    color: var(--primary);
+    background: transparent;
+    color: #fff;
+    border-color: #2a5b89;
     font-weight: 700;
 }
 
-.menu-btn:hover,
+.menu-btn:hover {
+    background: var(--primary-strong);
+}
+
 .menu-btn.active {
-    background: #d0e0fa;
+    background: var(--primary-strong);
+    border-bottom: 3px solid #ffffff;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.35);
 }
 
 #btn-cerrar-sesion.menu-btn {
     margin-left: auto !important;
     background: #e53935 !important;
     color: #fff !important;
+}
+
+.menu-btn:focus-visible,
+.rutas-bar-btn:focus-visible,
+.supervisor-ruta-btn:focus-visible,
+button:focus-visible {
+    outline: 2px solid #145da0;
+    outline-offset: 2px;
 }
 
 .rutas-bar {
@@ -121,7 +135,7 @@ button,
 .rutas-bar-btn.active,
 .rutas-bar-btn:hover,
 .supervisor-ruta-btn:hover {
-    background: var(--primary);
+    background: var(--primary-strong);
     color: #fff;
 }
 
@@ -239,6 +253,7 @@ button,
 .btn-guardar-hoja {
     background: var(--primary);
     color: #fff;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 button:hover,
@@ -258,19 +273,21 @@ table,
     display: block;
     width: 100%;
     margin-top: 16px;
+    margin-bottom: 10px;
     overflow-x: auto;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 8px;
+    border: 1px solid #c6d6ea;
     background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 th,
 td {
-    border: 1px solid #e0e0e0;
+    border: 1px solid #cdd9e8;
     text-align: center;
-    padding: 10px 8px;
+    padding: 11px 10px;
     font-size: 0.95rem;
 }
 
@@ -278,7 +295,7 @@ th {
     position: sticky;
     top: 0;
     z-index: 2;
-    background: #e3eaf6;
+    background: #d9e8f8;
     font-weight: 700;
 }
 
@@ -315,7 +332,7 @@ tr:hover td {
     font-weight: 700;
     letter-spacing: 0.1em;
     color: var(--primary);
-    background: #e3eaf6;
+    background: #d9e8f8;
     box-shadow: 0 2px 8px rgba(25, 118, 210, 0.15);
 }
 
@@ -331,6 +348,7 @@ tr:hover td {
     gap: 12px;
     margin: 12px 0;
     border-radius: 8px;
+    border: 1px solid #c6d6ea;
     padding: 12px 16px;
     font-size: 1rem;
     font-weight: 700;
@@ -384,6 +402,7 @@ tr:hover td {
     gap: 12px;
     margin-bottom: 8px;
     border-radius: 8px;
+    border: 1px solid #c6d6ea;
     border-left: 4px solid var(--primary);
     padding: 10px 14px;
     background: var(--bg);
@@ -416,7 +435,7 @@ tr:hover td {
     min-width: 0;
     min-height: 0;
     padding: 4px 6px;
-    border: none;
+    border: 1px solid var(--primary);
     background: none;
     color: #e53935;
     font-size: 1.1rem;
@@ -424,6 +443,35 @@ tr:hover td {
 
 .alarmas-vacio {
     color: #6b7280;
+}
+
+
+
+.inicio-corporate-clock {
+    max-width: 280px;
+    margin: 0 auto 16px;
+    border: 1px solid #c6d6ea;
+    border-left: 4px solid var(--primary);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+    background: #eef4fb;
+    box-shadow: 0 2px 8px rgba(13, 59, 102, 0.08);
+}
+
+.inicio-corporate-clock-time {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+}
+
+.inicio-corporate-clock-date {
+    margin-top: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.82rem;
+    color: #4b5e73;
 }
 
 @media (max-width: 768px) {

@@ -4,6 +4,44 @@
 import { PanelOperario } from '../components/PanelOperario.js';
 import { cargarPlantillas } from '../services/plantillasService.js';
 
+let _inicioClockInterval = null;
+
+function corporateClockMarkup() {
+    return `
+        <div class="inicio-corporate-clock" aria-live="polite">
+            <div class="inicio-corporate-clock-time" id="inicio-corporate-clock-time">00:00:00</div>
+            <div class="inicio-corporate-clock-date" id="inicio-corporate-clock-date"></div>
+        </div>
+    `;
+}
+
+export function initInicioClock() {
+    if (_inicioClockInterval) {
+        clearInterval(_inicioClockInterval);
+        _inicioClockInterval = null;
+    }
+
+    function updateClock() {
+        const timeEl = document.getElementById('inicio-corporate-clock-time');
+        const dateEl = document.getElementById('inicio-corporate-clock-date');
+        if (!timeEl || !dateEl) {
+            clearInterval(_inicioClockInterval);
+            _inicioClockInterval = null;
+            return;
+        }
+
+        const now = new Date();
+        const hh = String(now.getHours()).padStart(2, '0');
+        const mm = String(now.getMinutes()).padStart(2, '0');
+        const ss = String(now.getSeconds()).padStart(2, '0');
+        timeEl.textContent = `${hh}:${mm}:${ss}`;
+        dateEl.textContent = now.toLocaleDateString();
+    }
+
+    updateClock();
+    _inicioClockInterval = setInterval(updateClock, 1000);
+}
+
 export function Inicio() {
     const operario = localStorage.getItem('operario');
     if (operario) {
@@ -21,6 +59,7 @@ export function Inicio() {
             }
         }
         return `<div class="section-inicio">
+            ${corporateClockMarkup()}
             <h2>Bienvenido al sistema de Rutas JIT</h2>
             <p><b>¡Bienvenido, ${operario}!</b></p>
             ${rutasSel}
@@ -78,6 +117,7 @@ export function Inicio() {
         }
     }, 0);
     return `<div class="section-inicio">
+        ${corporateClockMarkup()}
         <h2>Bienvenido al sistema de Rutas JIT</h2>
         <p>Identifíquese para comenzar:</p>
         ${PanelOperario({})}

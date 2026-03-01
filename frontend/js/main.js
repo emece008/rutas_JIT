@@ -2,7 +2,7 @@
 
 import { Header } from '../components/Header.js';
 import { MenuBar } from '../components/MenuBar.js';
-import { Inicio } from '../sections/Inicio.js';
+import { Inicio, initInicioClock } from '../sections/Inicio.js';
 import { Rutas } from '../sections/Rutas.js';
 import { Historial } from '../sections/Historial.js';
 
@@ -48,6 +48,7 @@ async function main() {
         setActiveMenu(section);
         if (section === 'inicio') {
             sectionContent.innerHTML = Inicio();
+            initInicioClock();
         } else if (section === 'rutas') {
             sectionContent.innerHTML = Rutas();
         } else if (section === 'hoja-carga') {
