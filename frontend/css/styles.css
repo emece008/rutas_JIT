@@ -235,6 +235,14 @@ button:focus-visible {
     color: #bcc4d1;
 }
 
+.estado-seleccionada {
+    color: #9ad0ff;
+}
+
+.estado-viaje-seleccionado {
+    color: #ffe18a;
+}
+
 label {
     font-weight: 700;
 }
@@ -265,6 +273,64 @@ button:hover,
 .plantilla,
 .tabla-centro {
     width: 100%;
+}
+
+.section-hoja-carga {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.section-hoja-carga .plantilla,
+.section-hoja-carga .tabla-centro,
+.section-hoja-carga #hoja-carga-content {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.section-hoja-carga .tabla-hoja-carga {
+    display: table;
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    overflow: hidden;
+}
+
+.section-hoja-carga .tabla-hoja-carga th,
+.section-hoja-carga .tabla-hoja-carga td {
+    min-width: 0;
+    max-width: 0;
+    overflow: hidden;
+}
+
+.section-hoja-carga .tabla-hoja-carga th {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    text-overflow: clip;
+    font-size: 0.82rem;
+    line-height: 1.2;
+    padding: 8px 6px;
+}
+
+.section-hoja-carga .tabla-hoja-carga td {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    line-height: 1.25;
+    padding: 9px 6px;
+}
+
+.section-hoja-carga .tabla-hoja-carga input,
+.section-hoja-carga .tabla-hoja-carga select,
+.section-hoja-carga .tabla-hoja-carga textarea {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 table,
@@ -474,6 +540,248 @@ tr:hover td {
     color: #4b5e73;
 }
 
+.inicio-executive-divider {
+    margin: 10px -12px 8px;
+    border-top: 1px solid #c6d6ea;
+}
+
+.inicio-executive-status {
+    text-align: left;
+    display: grid;
+    gap: 6px;
+}
+
+.inicio-executive-item {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.inicio-executive-danger {
+    color: #c62828;
+}
+
+.inicio-executive-success {
+    color: #2e7d32;
+}
+
+.inicio-executive-info {
+    color: #1565c0;
+}
+
+.ruta-seleccion-control {
+    margin: 12px 0 14px;
+    padding: 10px 12px;
+    border: 1px solid #c6d6ea;
+    border-left: 4px solid var(--primary);
+    border-radius: 8px;
+    background: #eef4fb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.ruta-actual-control {
+    margin: 10px 0 12px;
+    padding: 10px 12px;
+    border: 1px solid #c6d6ea;
+    border-left: 4px solid #145da0;
+    border-radius: 8px;
+    background: #f1f6fc;
+}
+
+.ruta-actual-header {
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.ruta-actual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+    align-items: end;
+}
+
+.ruta-actual-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.ruta-actual-grid input,
+.ruta-actual-grid select {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ruta-actual-estado {
+    margin-top: 8px;
+    color: #334e68;
+}
+
+.ruta-seleccion-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: var(--primary);
+}
+
+.ruta-seleccion-nav {
+    display: flex;
+    gap: 6px;
+}
+
+.btn-ruta-nav {
+    min-height: 32px;
+    min-width: 32px;
+    padding: 4px 8px;
+    background: #fff;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    font-weight: 700;
+}
+
+.btn-ruta-nav:hover:not(:disabled) {
+    background: var(--primary-strong);
+    color: #fff;
+}
+
+.btn-ruta-nav:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.ruta-seleccion-campo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #c6d6ea;
+    border-radius: 6px;
+    background: #fff;
+    padding: 4px 8px;
+}
+
+.ruta-seleccion-select {
+    min-width: 100px;
+    border: 1px solid #9fb8d4;
+    border-radius: 6px;
+    padding: 4px 8px;
+    color: var(--primary);
+    font-weight: 700;
+    background: #fff;
+}
+
+.ruta-seleccion-label {
+    font-weight: 700;
+}
+
+.ruta-seleccion-valor {
+    font-size: 1.05rem;
+}
+
+.ruta-seleccion-acciones {
+    display: flex;
+    gap: 8px;
+}
+
+.ruta-seleccion-editor {
+    width: 100%;
+    margin-top: 10px;
+    border-top: 1px solid #c6d6ea;
+    padding-top: 10px;
+}
+
+.ruta-seleccion-copia {
+    width: 100%;
+    margin-top: 0;
+}
+
+.ruta-seleccion-copia .tabla-hoja-carga {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.ruta-seleccion-editor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 8px;
+}
+
+.ruta-seleccion-editor-grid label,
+.ruta-seleccion-material-item label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.ruta-seleccion-materiales {
+    margin-top: 10px;
+    display: grid;
+    gap: 8px;
+}
+
+.ruta-seleccion-material-item {
+    border: 1px solid #d3e0ef;
+    border-radius: 6px;
+    background: #f8fbff;
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr repeat(2, minmax(110px, 160px));
+    gap: 8px;
+    align-items: end;
+}
+
+.ruta-seleccion-material-nombre {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.ruta-seleccion-vacio {
+    margin: 8px 0 0;
+    color: #4b5e73;
+}
+
+.btn-ruta-control {
+    background: #fff;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    font-weight: 700;
+}
+
+.btn-ruta-control:hover:not(:disabled) {
+    background: var(--primary-strong);
+    color: #fff;
+}
+
+.btn-ruta-control:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.section-hoja-carga .fila-viaje {
+    cursor: pointer;
+}
+
+.section-hoja-carga .fila-viaje-seleccionada td {
+    background: #dfeeff;
+    box-shadow: inset 0 0 0 1px #8ab4e8;
+}
+
+.section-hoja-carga .fila-viaje-cerrada td {
+    opacity: 0.72;
+}
+
 @media (max-width: 768px) {
     :root {
         --header-height: 64px;
@@ -505,6 +813,11 @@ tr:hover td {
     th,
     td {
         min-width: 90px;
+    }
+
+    .section-hoja-carga .tabla-hoja-carga th,
+    .section-hoja-carga .tabla-hoja-carga td {
+        min-width: 0;
     }
 
     .reloj-display {

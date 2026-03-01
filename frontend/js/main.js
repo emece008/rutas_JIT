@@ -55,7 +55,11 @@ async function main() {
             try {
                 const mod = await import('../sections/HojaCarga.js');
                 sectionContent.innerHTML = mod.HojaCarga();
+                if (typeof mod.initHojaCarga === 'function') {
+                    mod.initHojaCarga();
+                }
             } catch (e) {
+                console.error('Error cargando Hoja de Carga:', e);
                 sectionContent.innerHTML = '<div style="color:red">Error cargando Hoja de Carga</div>';
             }
         } else if (section === 'historial') {

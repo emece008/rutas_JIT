@@ -3,6 +3,7 @@
 
 import { PanelOperario } from '../components/PanelOperario.js';
 import { cargarPlantillas } from '../services/plantillasService.js';
+import { calcularResumenOperativo, getHojaStorageSafe } from '../services/estadoOperativoService.js';
 
 let _inicioClockInterval = null;
 
@@ -11,8 +12,24 @@ function corporateClockMarkup() {
         <div class="inicio-corporate-clock" aria-live="polite">
             <div class="inicio-corporate-clock-time" id="inicio-corporate-clock-time">00:00:00</div>
             <div class="inicio-corporate-clock-date" id="inicio-corporate-clock-date"></div>
+            <div class="inicio-executive-divider"></div>
+            <div class="inicio-executive-status">
+                <div class="inicio-executive-item inicio-executive-danger">🔴 Retrasadas: <span id="inicio-retrasadas">0</span></div>
+                <div class="inicio-executive-item inicio-executive-success">🟢 Actual: <span id="inicio-actual">-</span></div>
+                <div class="inicio-executive-item inicio-executive-info">🔵 Próxima: <span id="inicio-proxima">-</span></div>
+            </div>
         </div>
     `;
+}
+
+function formatExecutiveDate(now) {
+    const raw = now.toLocaleDateString('es-ES', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    }).replace(',', '');
+    return raw.charAt(0).toUpperCase() + raw.slice(1);
 }
 
 export function initInicioClock() {
@@ -24,7 +41,10 @@ export function initInicioClock() {
     function updateClock() {
         const timeEl = document.getElementById('inicio-corporate-clock-time');
         const dateEl = document.getElementById('inicio-corporate-clock-date');
-        if (!timeEl || !dateEl) {
+        const retrasadasEl = document.getElementById('inicio-retrasadas');
+        const actualEl = document.getElementById('inicio-actual');
+        const proximaEl = document.getElementById('inicio-proxima');
+        if (!timeEl || !dateEl || !retrasadasEl || !actualEl || !proximaEl) {
             clearInterval(_inicioClockInterval);
             _inicioClockInterval = null;
             return;
@@ -35,7 +55,13 @@ export function initInicioClock() {
         const mm = String(now.getMinutes()).padStart(2, '0');
         const ss = String(now.getSeconds()).padStart(2, '0');
         timeEl.textContent = `${hh}:${mm}:${ss}`;
-        dateEl.textContent = now.toLocaleDateString();
+        dateEl.textContent = formatExecutiveDate(now);
+
+        const hoja = getHojaStorageSafe();
+        const resumen = calcularResumenOperativo(hoja, now);
+        retrasadasEl.textContent = String(resumen.retrasadas.length);
+        actualEl.textContent = resumen.actual;
+        proximaEl.textContent = resumen.proxima;
     }
 
     updateClock();
@@ -45,25 +71,10 @@ export function initInicioClock() {
 export function Inicio() {
     const operario = localStorage.getItem('operario');
     if (operario) {
-        // Mostrar resumen de ciclos y rutas seleccionadas si hay hoja de carga
-        const hoja = JSON.parse(localStorage.getItem('hoja_carga') || 'null');
-        let resumen = '';
-        let rutasSel = '';
-        if (hoja && hoja.ciclos && hoja.ciclos.length > 0) {
-            const total = hoja.ciclos.length;
-            const realizados = hoja.ciclos.filter(c => c.estado !== 'Pendiente').length;
-            const pendientes = total - realizados;
-            resumen = `<div style="margin-top:16px"><b>Resumen de ciclos:</b> Realizados: ${realizados} / Pendientes: ${pendientes} / Total: ${total}</div>`;
-            if (hoja.rutas && hoja.rutas.length > 0) {
-                rutasSel = `<div style="margin-top:8px"><b>Rutas asignadas:</b> ${hoja.rutas.join(', ')}</div>`;
-            }
-        }
         return `<div class="section-inicio">
             ${corporateClockMarkup()}
             <h2>Bienvenido al sistema de Rutas JIT</h2>
             <p><b>¡Bienvenido, ${operario}!</b></p>
-            ${rutasSel}
-            ${resumen}
         </div>`;
     }
     setTimeout(async () => {
