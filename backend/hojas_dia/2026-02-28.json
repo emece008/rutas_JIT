@@ -1,0 +1,7 @@
+// Estructura de hoja del día de ejemplo
+{
+  "fecha": "2026-02-28",
+  "operario": "",
+  "rutas": [],
+  "estado": "Abierta"
+}

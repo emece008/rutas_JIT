@@ -1,0 +1,9 @@
+// Plantilla de ejemplo para L4
+{
+  "nombre": "L4",
+  "ciclos": [
+    { "numero": 1, "horaLlegadaPrevista": "06:15", "horaSalidaPrevista": "06:45", "duracionVentana": 30, "orden": 1 },
+    { "numero": 2, "horaLlegadaPrevista": "07:15", "horaSalidaPrevista": "07:45", "duracionVentana": 30, "orden": 2 }
+    // ... hasta 17 ciclos
+  ]
+}

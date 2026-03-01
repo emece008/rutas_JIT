@@ -1,0 +1,9 @@
+// Plantilla de ejemplo para L3
+{
+  "nombre": "L3",
+  "ciclos": [
+    { "numero": 1, "horaLlegadaPrevista": "06:00", "horaSalidaPrevista": "06:30", "duracionVentana": 30, "orden": 1 },
+    { "numero": 2, "horaLlegadaPrevista": "07:00", "horaSalidaPrevista": "07:30", "duracionVentana": 30, "orden": 2 }
+    // ... hasta 17 ciclos
+  ]
+}

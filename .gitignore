@@ -1,0 +1,14 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Logs
+*.log
+
+# Environment (si luego usas variables)
+.env
+
+# Dependencias (si algún día usas npm/composer)
+node_modules/
+vendor/
