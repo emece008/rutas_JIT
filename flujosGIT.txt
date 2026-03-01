@@ -1,0 +1,143 @@
+🧱 PARTE 1 — Flujo normal en main
+1️⃣ Modifica cualquier archivo
+
+Por ejemplo:
+
+frontend/index.html
+
+Añade un comentario tipo:
+
+<!-- prueba commit 2 -->
+
+Guarda.
+
+2️⃣ Verifica el estado
+git status
+
+Deberías ver algo como:
+
+modified: frontend/index.html
+
+Eso significa:
+Git detecta cambios en tu working directory.
+
+3️⃣ Añade al staging
+git add frontend/index.html
+
+(Lo hacemos específico para que practiques control fino.)
+
+4️⃣ Verifica qué va a entrar
+git status
+
+Ahora debería salir en:
+
+Changes to be committed:
+5️⃣ Commit
+git commit -m "Pequeña modificación en index"
+
+Esto crea un nuevo commit encima de main.
+
+6️⃣ Push
+git push
+
+Ahora ya no necesitas -u origin main, porque ya está vinculado.
+
+Hasta aquí → flujo clásico.
+
+🧠 Ahora subimos de nivel
+
+Vamos a trabajar con rama feature.
+
+Aquí empieza el flujo profesional.
+
+🧱 PARTE 2 — Crear y usar rama feature
+1️⃣ Crear nueva rama
+git checkout -b feature/reloj-ruta
+
+Explicación:
+
+checkout → cambiar de rama
+
+-b → crear nueva rama
+
+feature/reloj-ruta → nombre
+
+Ahora estás en esa rama.
+
+Comprueba:
+
+git branch
+
+Debe aparecer:
+
+* feature/reloj-ruta
+  main
+
+El asterisco indica dónde estás.
+
+2️⃣ Modifica algo
+
+Por ejemplo:
+
+frontend/components/RutasBar.js
+
+Añade un comentario:
+
+// lógica futura reloj ruta
+
+Guarda.
+
+3️⃣ Flujo normal otra vez
+git status
+git add .
+git commit -m "Inicio feature reloj ruta"
+4️⃣ Subir la nueva rama a GitHub
+
+Aquí es diferente:
+
+git push -u origin feature/reloj-ruta
+
+Esto crea la rama también en GitHub.
+
+Ahora si vas a GitHub, verás:
+
+main
+
+feature/reloj-ruta
+
+GitHub te sugerirá crear un Pull Request.
+
+🧠 Diferencia clave
+
+Trabajando en main:
+
+Modificas → commit → push
+
+Trabajando en feature:
+
+Crear rama → modificar → commit → push rama → Pull Request → merge a main
+
+Esto permite:
+
+No romper producción
+
+Trabajar en equipo
+
+Revisar código antes de mezclarlo
+
+🎯 Ahora hazlo
+
+Primero:
+Haz el flujo normal en main (modificación pequeña).
+
+Después:
+Creamos feature y repetimos el proceso.
+
+Cuando lo hagas, pásame:
+
+git branch
+git log --oneline --graph --all
+
+Y te explico visualmente cómo está tu historial.
+
+Ahora ya estás entrando en flujo profesional real 🚀
