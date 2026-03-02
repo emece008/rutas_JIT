@@ -6,5 +6,6 @@ export function horaToMinutes(hora) {
 }
 
 export function pickPendiente(ciclosRuta) {
+    if (!Array.isArray(ciclosRuta) || ciclosRuta.length === 0) return null;
     return ciclosRuta.find(c => !c.horaSalidaReal) || ciclosRuta[ciclosRuta.length - 1] || null;
 }
