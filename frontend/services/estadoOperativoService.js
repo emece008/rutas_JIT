@@ -1,16 +1,11 @@
+import { horaToMinutes, pickPendiente } from './tiempoUtils.js';
+
 export function getHojaStorageSafe() {
     try {
         return JSON.parse(localStorage.getItem('hoja_carga') || 'null');
     } catch {
         return null;
     }
-}
-
-function horaToMinutes(hora) {
-    if (!hora || typeof hora !== 'string' || !hora.includes(':')) return null;
-    const [hh, mm] = hora.split(':').map(Number);
-    if (Number.isNaN(hh) || Number.isNaN(mm)) return null;
-    return hh * 60 + mm;
 }
 
 export function calcularResumenOperativo(hoja, now = new Date()) {
@@ -37,7 +32,7 @@ export function calcularResumenOperativo(hoja, now = new Date()) {
 
     const minutosAhora = now.getHours() * 60 + now.getMinutes();
     const resumenRutas = Array.from(rutasMap.entries()).map(([ruta, ciclos]) => {
-        const pendiente = ciclos.find(c => !c.horaSalidaReal) || ciclos[ciclos.length - 1];
+        const pendiente = pickPendiente(ciclos);
         const horaRef = pendiente?.horaSalidaPrevista || pendiente?.horaLlegadaPrevista;
         const minutosPlan = horaToMinutes(horaRef);
         const minutosRetraso = minutosPlan === null ? 0 : Math.max(0, minutosAhora - minutosPlan);
